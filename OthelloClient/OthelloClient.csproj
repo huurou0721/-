@@ -100,5 +100,11 @@
   <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="7.2.0.1367" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Othello\Othello.csproj">
+      <Project>{5562D3AC-D5CC-47F9-B911-13D682F2BCBC}</Project>
+      <Name>Othello</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

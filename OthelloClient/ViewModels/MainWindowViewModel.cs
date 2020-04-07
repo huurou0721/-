@@ -1,4 +1,7 @@
-﻿using OthelloClient.Views;
+﻿using Othello.Application;
+using Othello.Domain.Model;
+using OthelloClient.Views;
+using Prism.Events;
 using Prism.Mvvm;
 
 namespace OthelloClient.ViewModels
@@ -25,9 +28,15 @@ namespace OthelloClient.ViewModels
 
         #endregion binding property
 
-        public MainWindowViewModel()
+        private readonly OthelloAppService appService_;
+
+        public MainWindowViewModel(IEventAggregator ea)
         {
-            MainWindow.BoardClickEvent += (_, e) => Position = $"X: {e.X}, Y: {e.Y}";
+            appService_ = new OthelloAppService(ea);
+            MainWindow.BoardClickEvent += 
+                (_, e) => Position = $"X: {e.Position.X}, Y: {e.Position.Y}";
+            MainWindow.BoardClickEvent +=
+                (_, e) => ea.GetEvent<PutStoneEvent>().Publish(e.Position);
         }
     }
 }

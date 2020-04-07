@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Othello.Domain.Model;
+using System;
 using System.Windows;
 
 namespace OthelloClient.Views
@@ -20,19 +21,17 @@ namespace OthelloClient.Views
             var position = e.GetPosition(BoardGrid);
             var X = (int)(position.X / (BoardGrid.Width + 1) * 8);
             var Y = (int)(position.Y / (BoardGrid.Height + 1) * 8);
-            BoardClickEvent(this, new BoardClickEventArgs(X, Y));
+            BoardClickEvent(this, new BoardClickEventArgs(new Position(X, Y)));
         }
     }
 
     public class BoardClickEventArgs : EventArgs
     {
-        public int X { get; }
-        public int Y { get; }
+        public Position Position { get; set; }
 
-        public BoardClickEventArgs(int x, int y)
+        public BoardClickEventArgs(Position position)
         {
-            X = x;
-            Y = y;
+            Position = position;
         }
     }
 }
