@@ -1,4 +1,5 @@
-﻿using Othello.Domain.Model;
+﻿using Othello.Application;
+using Othello.Domain.Model;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,7 +19,7 @@ namespace OthelloClient.Views
         public MainWindow()
         {
             InitializeComponent();
-            Game.BoardDrawEvent += DrawBoard;
+            OthelloAppService.BoardDrawEvent += DrawBoard;
         }
 
         private void BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)

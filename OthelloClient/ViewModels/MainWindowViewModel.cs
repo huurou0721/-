@@ -33,7 +33,7 @@ namespace OthelloClient.ViewModels
         {
             appService_ = new OthelloAppService(ea);
             MainWindow.BoardClickEvent += (_, e) => Position = $"X: {e.Position.X}, Y: {e.Position.Y}";
-            MainWindow.BoardClickEvent += (_, e) => appService_.TryPut(e.Position);
+            MainWindow.BoardClickEvent += (_, e) => appService_.PutTurn(e.Position);
         }
     }
 }

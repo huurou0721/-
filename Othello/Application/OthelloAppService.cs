@@ -1,26 +1,54 @@
 ﻿using Othello.Domain.Model;
 using Othello.Infrastructure;
 using Prism.Events;
+using System;
 
 namespace Othello.Application
 {
     public class OthelloAppService
     {
-        private readonly IEventAggregator ea_;
-        private readonly IBoard board_;
+        public static event EventHandler<BoardDrawEventArgs> BoardDrawEvent;
 
-        private readonly Game game_;
+        private readonly IEventAggregator ea_;
+        private IBoard board_;
+
+        private Teban teban_;
 
         public OthelloAppService(IEventAggregator ea)
         {
             ea_ = ea;
             board_ = new BitBoard();
-            game_ = new Game(board_);
         }
 
-        public void TryPut(Position position)
+        public void PutTurn(Position position)
         {
-            game_.TryPut(position);
+            if (board_.IsLegal(teban_, position))
+            {
+                board_ = board_.PutTurn(teban_, position);
+                SwitchTeban();
+            }
+        }
+
+        private void SwitchTeban()
+        {
+            switch (teban_)
+            {
+                case Teban.Black:
+                    teban_ = Teban.White;
+                    break;
+
+                case Teban.White:
+                    teban_ = Teban.Black;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void DrawBoard(Placement placement)
+        {
+            BoardDrawEvent(this, new BoardDrawEventArgs(placement));
         }
     }
 }
