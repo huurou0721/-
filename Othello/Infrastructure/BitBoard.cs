@@ -9,15 +9,19 @@ namespace Othello.Infrastructure
 {
     class BitBoard : IBoard
     {
-        public Placement Placement
+        public Placement Placement => throw new NotImplementedException();
+
+        public int CountBlackStone()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
         }
 
-        public (int black, int white, int total) CountStone()
+        public int CountTotalStone()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CountWhiteStone()
         {
             throw new NotImplementedException();
         }

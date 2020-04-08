@@ -1,40 +1,26 @@
 ﻿using Othello.Domain.Model;
 using Othello.Infrastructure;
 using Prism.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Othello.Application
 {
     public class OthelloAppService
     {
+        private readonly IEventAggregator ea_;
         private readonly IBoard board_;
+
+        private readonly Game game_;
 
         public OthelloAppService(IEventAggregator ea)
         {
-            ea.GetEvent<PutStoneEvent>().Subscribe(OnStonePut);
+            ea_ = ea;
+            board_ = new BitBoard();
+            game_ = new Game(board_);
         }
 
-        private void OnStonePut(Position position)
+        public void TryPut(Position position)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool TryPut(Teban teban, Position position, out IBoard board)
-        {
-            if (board_.IsLegal(teban, position))
-            {
-                board = board_.PutTurn(teban, position);
-                return true;
-            }
-            else
-            {
-                board = null;
-                return false;
-            }
+            game_.TryPut(position);
         }
     }
 }

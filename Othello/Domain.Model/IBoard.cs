@@ -15,7 +15,9 @@ namespace Othello.Domain.Model
         IBoard PutTurn(Teban teban, Position position);
         bool IsLegal(Teban teban, Position position);
         List<Position> LegalList(Teban teban, Position position);
-        (int black, int white, int total) CountStone();
+        int CountBlackStone();
+        int CountWhiteStone();
+        int CountTotalStone();
 
     }
 }
