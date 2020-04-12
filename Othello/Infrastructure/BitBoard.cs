@@ -86,7 +86,7 @@ namespace Othello.Infrastructure
             {
                 var bitPosition = legalBoard & (~legalBoard + 1);
                 ll.Add(ToPosition(bitPosition));
-                legalBoard &= bitPosition;
+                legalBoard &= ~bitPosition;
             }
             return ll;
         }

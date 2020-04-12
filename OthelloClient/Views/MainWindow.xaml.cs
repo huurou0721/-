@@ -19,7 +19,7 @@ namespace OthelloClient.Views
         public MainWindow()
         {
             InitializeComponent();
-            OthelloAppService.BoardDrawEvent += DrawBoard;
+            OthelloAppService.BoardDrawEvent += (_, e) => DrawBoard(e.Placement);
         }
 
         private void BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -30,17 +30,17 @@ namespace OthelloClient.Views
             BoardClickEvent(this, new BoardClickEventArgs(new Position(X, Y)));
         }
 
-        private void DrawBoard(object sender, BoardDrawEventArgs e)
+        private void DrawBoard(Placement placement)
         {
             for (var x = 0; x < 8; x++)
             {
                 for (var y = 0; y < 8; y++)
                 {
-                    if (e.Placement.BlackBoard[x, y])
+                    if (placement.BlackBoard[x, y])
                     {
                         DrawStone(x, y, Brushes.Black);
                     }
-                    if (e.Placement.WhiteBoard[x, y])
+                    if (placement.WhiteBoard[x, y])
                     {
                         DrawStone(x, y, Brushes.White);
                     }

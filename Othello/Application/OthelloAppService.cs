@@ -21,15 +21,15 @@ namespace Othello.Application
             ea_ = ea;
             board_ = new BitBoard(34628173824, 68853694464);
             ai_ = new RandomMoveAI();
+            teban_ = Teban.Black;
         }
 
         public void PutTurn(Position position)
         {
-            if (board_.IsLegal(teban_, position))
-            {
-                board_ = board_.PutTurn(teban_, position);
-                SwitchTeban();
-            }
+            if (!board_.IsLegal(teban_, position)) return;
+            board_ = board_.PutTurn(teban_, position);
+            SwitchTeban();
+            DrawBoard();
         }
 
         private void SwitchTeban()
@@ -49,9 +49,9 @@ namespace Othello.Application
             }
         }
 
-        private void DrawBoard(Placement placement)
+        private void DrawBoard()
         {
-            BoardDrawEvent(this, new BoardDrawEventArgs(placement));
+            BoardDrawEvent(this, new BoardDrawEventArgs(board_.Placement));
         }
     }
 }
