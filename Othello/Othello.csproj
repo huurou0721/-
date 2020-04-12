@@ -48,12 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\OthelloAppService.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Domain.Model\DomainEvent.cs" />
     <Compile Include="Domain.Model\DomainObject.cs" />
     <Compile Include="Domain.Model\Game.cs" />
+    <Compile Include="Domain.Model\IAI.cs" />
     <Compile Include="Domain.Model\IBoard.cs" />
     <Compile Include="Domain.Model\Play.cs" />
+    <Compile Include="Infrastructure\AI\RandomMoveAI.cs" />
     <Compile Include="Infrastructure\BitBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
