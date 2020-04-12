@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Othello.Domain.Model
 {
@@ -12,12 +8,17 @@ namespace Othello.Domain.Model
         /// 盤面描写用　黒石白石がそれぞれ盤面1マスごとに存在しているかどうかbool[X,Y]
         /// </summary>
         Placement Placement { get; }
-        IBoard PutTurn(Teban teban, Position position);
-        bool IsLegal(Teban teban, Position position);
-        List<Position> LegalList(Teban teban, Position position);
-        int CountBlackStone();
-        int CountWhiteStone();
-        int CountTotalStone();
 
+        IBoard PutTurn(Teban teban, Position position);
+
+        bool IsLegal(Teban teban, Position position);
+
+        List<Position> GetLegalPosistionList(Teban teban);
+
+        int CountBlackStone();
+
+        int CountWhiteStone();
+
+        int CountTotalStone();
     }
 }

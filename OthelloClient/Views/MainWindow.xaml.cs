@@ -28,27 +28,6 @@ namespace OthelloClient.Views
             var X = (int)(position.X / (BoardGrid.Width + 1) * 8);
             var Y = (int)(position.Y / (BoardGrid.Height + 1) * 8);
             BoardClickEvent(this, new BoardClickEventArgs(new Position(X, Y)));
-
-            var placement = new Placement(
-                new bool[8, 8] { { false, false, false, false, false, false, false, false },
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, true, false, false, false, },
-                                 { false, false, false, true, false, false, false, false, },
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,}
-                },
-                new bool[8, 8] { { false, false, false, false, false, false, false, false },
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, true, false, false, false, false, },
-                                 { false, false, false, false, true, false, false, false, },
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,},
-                                 { false, false, false, false, false, false, false, false,}
-                }
-                );
         }
 
         private void DrawBoard(object sender, BoardDrawEventArgs e)
@@ -57,23 +36,31 @@ namespace OthelloClient.Views
             {
                 for (var y = 0; y < 8; y++)
                 {
-                    if (e.Placement.BlackBoard[x, y]) DrawBlackStone(x, y);
-                    if (e.Placement.WhiteBoard[x, y]) DrawWhiteStone(x, y);
+                    if (e.Placement.BlackBoard[x, y])
+                    {
+                        DrawStone(x, y, Brushes.Black);
+                    }
+                    if (e.Placement.WhiteBoard[x, y])
+                    {
+                        DrawStone(x, y, Brushes.White);
+                    }
                 }
             }
         }
 
         private void DrawBlackStone(int x, int y)
         {
-            var ellipse = new Ellipse { Fill = Brushes.Black, Margin = new Thickness(3) };
-            Grid.SetColumn(ellipse, x);
-            Grid.SetRow(ellipse, y);
-            BoardGrid.Children.Add(ellipse);
+            DrawStone(x, y, Brushes.Black);
         }
 
         private void DrawWhiteStone(int x, int y)
         {
-            var ellipse = new Ellipse { Fill = Brushes.White, Margin = new Thickness(3) };
+            DrawStone(x, y, Brushes.White);
+        }
+
+        private void DrawStone(int x, int y, SolidColorBrush brush)
+        {
+            var ellipse = new Ellipse { Fill = brush, Margin = new Thickness(3) };
             Grid.SetColumn(ellipse, x);
             Grid.SetRow(ellipse, y);
             BoardGrid.Children.Add(ellipse);

@@ -2,7 +2,7 @@
 
 namespace Othello.Domain.Model
 {
-    public class Position
+    public struct Position
     {
         public int X { get; }
         public int Y { get; }
