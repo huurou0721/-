@@ -48,16 +48,6 @@ namespace OthelloClient.Views
             }
         }
 
-        private void DrawBlackStone(int x, int y)
-        {
-            DrawStone(x, y, Brushes.Black);
-        }
-
-        private void DrawWhiteStone(int x, int y)
-        {
-            DrawStone(x, y, Brushes.White);
-        }
-
         private void DrawStone(int x, int y, SolidColorBrush brush)
         {
             var ellipse = new Ellipse { Fill = brush, Margin = new Thickness(3) };
