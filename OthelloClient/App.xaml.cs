@@ -16,7 +16,6 @@ namespace OthelloClient
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-
         }
     }
 }

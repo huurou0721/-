@@ -1,5 +1,4 @@
 ﻿using Othello.Domain.Model;
-using System;
 
 namespace Othello.Infrastructure.AI
 {
