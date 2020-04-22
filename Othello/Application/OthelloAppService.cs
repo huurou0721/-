@@ -29,6 +29,10 @@ namespace Othello.Application
                     blackAI_ = new RandomMoveAI();
                     break;
 
+                case "MonteCarloAI":
+                    blackAI_ = new MonteCarloAI(10000);
+                    break;
+
                 default:
                     break;
             }
@@ -36,6 +40,10 @@ namespace Othello.Application
             {
                 case "RandomMoveAI":
                     whiteAI_ = new RandomMoveAI();
+                    break;
+
+                case "MonteCarloAI":
+                    whiteAI_ = new MonteCarloAI(10000);
                     break;
 
                 default:
@@ -54,13 +62,11 @@ namespace Othello.Application
                     if (board_.GetLegalPosistionList(teban_).Count == 0)
                         break;
                 }
-                IAI ai;
-                ai = teban_ == Teban.Black
+                var ai = teban_ == Teban.Black
                     ? blackAI_
                     : whiteAI_;
-                board_ = board_.PutTurn(teban_, ai.DecideMove(teban_, board_));
+                board_ = await Task.Run(() => board_.PutTurn(teban_, ai.DecideMove(teban_, board_)));
                 SwitchTeban();
-                await Task.Delay(500);
             }
         }
 

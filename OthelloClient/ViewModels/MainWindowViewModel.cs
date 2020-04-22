@@ -73,7 +73,8 @@ namespace OthelloClient.ViewModels
 
             AIList = new List<string>
             {
-                "RandomMoveAI"
+                "RandomMoveAI",
+                "MonteCarloAI",
             };
 
             appService_ = new OthelloAppService(ea, SelectedBlackAI, SelectedWhiteAI);
