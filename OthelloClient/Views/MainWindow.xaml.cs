@@ -1,9 +1,8 @@
 ﻿using Othello.Application;
 using Othello.Domain.Model;
-using System;
+using OthelloClient.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -14,20 +13,27 @@ namespace OthelloClient.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static event EventHandler<BoardClickEventArgs> BoardClickEvent;
-
         public MainWindow()
         {
             InitializeComponent();
+            InitializeBoard();
             OthelloAppService.BoardDrawEvent += (_, e) => DrawBoard(e.Placement);
+            MainWindowViewModel.BoardInitializeEvent += (_, __) => InitializeBoard();
         }
 
-        private void BoardGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void InitializeBoard()
         {
-            var position = e.GetPosition(BoardGrid);
-            var X = (int)(position.X / (BoardGrid.Width + 1) * 8);
-            var Y = (int)(position.Y / (BoardGrid.Height + 1) * 8);
-            BoardClickEvent(this, new BoardClickEventArgs(new Position(X, Y)));
+            BoardGrid.Children.Clear();
+            for (var x = 0; x < 8; x++)
+            {
+                for (var y = 0; y < 8; y++)
+                {
+                    var border = new Border { BorderBrush = Brushes.Black, BorderThickness = new Thickness(1) };
+                    Grid.SetColumn(border, x);
+                    Grid.SetRow(border, y);
+                    BoardGrid.Children.Add(border);
+                }
+            }
         }
 
         private void DrawBoard(Placement placement)

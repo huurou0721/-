@@ -16,4 +16,3 @@ namespace Othello.Infrastructure.AI
         }
     }
 }
-}

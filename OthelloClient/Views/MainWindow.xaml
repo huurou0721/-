@@ -4,13 +4,7 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="650" Width="1000">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Dictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -27,7 +21,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Grid x:Name="BoardGrid" Grid.Column="0" Background="#FF219740" MouseDown="BoardGrid_MouseDown" Width="600" Height="600">
+            <Grid x:Name="BoardGrid" Grid.Column="0" Background="#FF219740" Width="600" Height="600">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
@@ -48,86 +42,28 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-
-                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="0" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="1" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="2" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="3" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="4" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="5" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="6" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="0" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="1" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="2" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="3" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="4" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="5" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="6" Style="{StaticResource BoardBorder}" />
-                <Border Grid.Row="7" Grid.Column="7" Style="{StaticResource BoardBorder}" />
-
-                <Ellipse Grid.Row="3" Grid.Column="3" Fill="White" Margin="3" />
-                <Ellipse Grid.Row="3" Grid.Column="4" Fill="Black" Margin="3" />
-                <Ellipse Grid.Row="4" Grid.Column="3" Fill="Black" Margin="3" />
-                <Ellipse Grid.Row="4" Grid.Column="4" Fill="White" Margin="3" />
             </Grid>
 
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <StackPanel Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Text="{Binding Position}" FontSize="40" />
-            </Grid>
+                    <Label Grid.Row="0" Grid.Column="0" Content="BlackAI" FontSize="20" HorizontalAlignment="Center" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" FontSize="20" ItemsSource="{Binding AIList}" SelectedItem="{Binding SelectedBlackAI}" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="WhiteAI" FontSize="20" HorizontalAlignment="Center" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" FontSize="20" ItemsSource="{Binding AIList}" SelectedItem="{Binding SelectedWhiteAI}" />
+                </Grid>
+
+                <Button Content="Play" FontSize="20" Command="{Binding PlayCmd}" />
+                <Label Content="{Binding ResultText}" />
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
